@@ -61,7 +61,6 @@ class linear_array {
                 array[i] = 0;
                 break;
             }
-
         }
 
         void deleteElementByNumberSearch(int dataToDelete)  {
@@ -89,6 +88,6 @@ int main()  {
     l1.deleteElementByPosition(5);
     l1.printArray();
 
-	cout << "Hello World!" << endl;
-	return 0;
+    cout << "Hello World!" << endl;
+    return 0;
 }
