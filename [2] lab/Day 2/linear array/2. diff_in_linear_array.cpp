@@ -3,24 +3,22 @@ using namespace std;
 
 
 int main()  {
-    // Initializing the array
     int sizeOfArray = 8;
-    int array[sizeOfArray];
+    int arr[sizeOfArray];
 
-    // Take user input for the array
-    cout << "Enter data for the array: " << endl;
+    cout << "Enter data for the arr: " << endl;
     for (int i = 0; i < sizeOfArray; i++)   {
-        cin >> array[i];
+        cin >> arr[i];
     }
 
     int maxValue = 0;
-    int minValue = array[0];
+    int minValue = arr[0];
     for (int i = 0; i < sizeOfArray; i++)   {
-        if (array[i] > maxValue)    {
-            maxValue = array[i];
+        if (arr[i] > maxValue)    {
+            maxValue = arr[i];
         }
-        if (array[i] < minValue)    {
-            minValue = array[i];
+        if (arr[i] < minValue)    {
+            minValue = arr[i];
         }
     }
 
