@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string> // Does not work that great with cstring, so using string objects instead.
 using namespace std;
 
 
@@ -10,7 +11,7 @@ struct AppointmentManagement    {
     struct AppTime  {
         int hour, minute;
     }ati;
-    char name[100];
+    string name;
 };
 
 int main()  {
@@ -21,8 +22,10 @@ int main()  {
     a1.ad.year = 2024;
     a1.ati.hour = 9;
     a1.ati.minute = 9;
+    a1.name = "Anisul Hoque";
 
     cout << "Appointment Information," << endl;
+    cout << "Name: " << a1.name << endl;
     cout << "Date: " << a1.ad.date << "/" << a1.ad.month << "/" << a1.ad.year << endl;
     cout << "Time: ";
     if (a1.ati.hour < 10)   {
