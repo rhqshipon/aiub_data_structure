@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string> // Does not work that great with cstring, so using string objects instead.
+#include <string> // Does not work that great with cstring, so using string objects instead. If using cstring then inputs must be provided by using strcpy().
 using namespace std;
 
 
