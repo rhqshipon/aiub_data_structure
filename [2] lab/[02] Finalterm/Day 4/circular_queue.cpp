@@ -11,45 +11,63 @@ bool isEmpty()  {
 }
 
 bool isFull()   {
-    return (rear == maxSize);
+    return (((rear + 1) % maxSize) == front);
 }
 
 bool enQueue(int value) {
-    if(isFull())  {
+    if (isFull()) {
         cout << "Queue overflowed!" << endl;
         return false;
     }
-    if(isEmpty())   {
-        front = 0;
+    if (isEmpty()) {
+        front = rear = 0;
     }
-    queueArray[++rear] = value;
+    else {
+        rear = (rear + 1) % maxSize;
+    }
+    queueArray[rear] = value;
     cout << "Insertion " << value << " successful!" << endl;
     return true;
 }
 
-bool deQueue()  {
-    if(isEmpty())   {
-        cout << "Queue is empty!" << endl;
+
+bool deQueue() {
+    if (isEmpty()) {
+        cout << "Queue is underflowed!" << endl;
         return false;
     }
-    cout << "Dequeued " << queueArray[front++] << " successfully" << endl;
-
-    if (front > rear)   {
-        front = -1;
-        rear = -1;
+    int store = queueArray[front];
+    if (front == rear) {
+        front = rear = -1;
     }
+    else {
+        front = (front + 1) % maxSize;
+    }
+    cout << "Dequeued " << store << " successfully" << endl;
     return true;
 }
 
+
 void showQueue()    {
     if(isEmpty())   {
-        cout << "Queue is empty, nothing to show!" << endl;
+        cout << "Queue is underflowed, nothing to show!" << endl;
         return;
     }
     cout << "Showing queue (left to right): ";
-    for (int i = front; i <= rear; i++) {
-        cout << queueArray[i] << " ";
+    if (front > rear)   {
+        for (int i = front; i < maxSize; i++) {
+            cout << queueArray[i] << " ";
+        }
+        for (int i = 0; i <= rear; i++) {
+            cout << queueArray[i] << " ";
+        }
     }
+    else    {
+        for (int i = front; i <= rear; i++) {
+            cout << queueArray[i] << " ";
+        }
+    }
+
     cout << endl;
 }
 
