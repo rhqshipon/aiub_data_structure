@@ -48,28 +48,25 @@ bool deQueue() {
 }
 
 
-void showQueue()    {
-    if(isEmpty())   {
+void showQueue() {
+    if (isEmpty()) {
         cout << "Queue is underflowed, nothing to show!" << endl;
         return;
     }
+
     cout << "Showing queue (left to right): ";
-    if (front > rear)   {
-        for (int i = front; i < maxSize; i++) {
-            cout << queueArray[i] << " ";
-        }
-        for (int i = 0; i <= rear; i++) {
-            cout << queueArray[i] << " ";
-        }
-    }
-    else    {
-        for (int i = front; i <= rear; i++) {
-            cout << queueArray[i] << " ";
+
+    for (int i = front; ; i = (i + 1) % maxSize) {
+        cout << queueArray[i] << " ";
+
+        if (i == rear) {
+            break;
         }
     }
 
     cout << endl;
 }
+
 
 int operationMenu()    {
     int option;
@@ -77,7 +74,7 @@ int operationMenu()    {
     cout << "[2] Dequeue element from the queue" << endl;
     cout << "[3] Display the queue" << endl;
     cout << "[4] Exit" << endl;
-    cout << "Enter your choice: " << endl;
+    cout << "Enter your choice: ";
     cin >> option;
     if (option >=1 && option <=4)   {
         return option;

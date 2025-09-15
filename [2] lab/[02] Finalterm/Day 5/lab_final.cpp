@@ -1,7 +1,6 @@
 #include <iostream>
 using namespace std;
 
-
 const int maxSize = 5;
 static int queueArray[maxSize];
 int front = -1, rear = -1;
@@ -16,7 +15,7 @@ bool isFull()   {
 
 bool enQueue(int value) {
     if (isFull()) {
-        cout << "Queue overflowed!" << endl;
+        cout << "Queue overflowed! No space reamining for new customers." << endl;
         return false;
     }
     if (isEmpty()) {
@@ -26,14 +25,13 @@ bool enQueue(int value) {
         rear = (rear + 1) % maxSize;
     }
     queueArray[rear] = value;
-    cout << "Insertion " << value << " successful!" << endl;
+    cout << "Insertion of customer " << value << " successful!" << endl;
     return true;
 }
 
-
 bool deQueue() {
     if (isEmpty()) {
-        cout << "Queue is underflowed!" << endl;
+        cout << "Queue is underflowed! No customers in the queue." << endl;
         return false;
     }
     int store = queueArray[front];
@@ -43,41 +41,38 @@ bool deQueue() {
     else {
         front = (front + 1) % maxSize;
     }
-    cout << "Dequeued " << store << " successfully" << endl;
+    float paidAmount;
+    cout << "Enter the amount of money paid: ";
+    cin >> paidAmount;
+    cout << "Dequeued customer " << store << " successfully with the payment of " << paidAmount << " taka." << endl;
     return true;
 }
 
-
-void showQueue()    {
-    if(isEmpty())   {
-        cout << "Queue is underflowed, nothing to show!" << endl;
+void showQueue() {
+    if (isEmpty()) {
+        cout << "Queue is underflowed, no customers to show!" << endl;
         return;
     }
-    cout << "Showing queue (left to right): ";
-    if (front > rear)   {
-        for (int i = front; i < maxSize; i++) {
-            cout << queueArray[i] << " ";
-        }
-        for (int i = 0; i <= rear; i++) {
-            cout << queueArray[i] << " ";
-        }
-    }
-    else    {
-        for (int i = front; i <= rear; i++) {
-            cout << queueArray[i] << " ";
-        }
-    }
 
+    cout << "Showing customer queue (left to right): ";
+
+    for (int i = front; ; i = (i + 1) % maxSize) {
+        cout << queueArray[i] << " ";
+
+        if (i == rear) {
+            break;
+        }
+    }
     cout << endl;
 }
 
 int operationMenu()    {
     int option;
-    cout << "[1] Enqueue element in the queue" << endl;
-    cout << "[2] Dequeue element from the queue" << endl;
-    cout << "[3] Display the queue" << endl;
+    cout << "[1] Enqueue customer in the queue" << endl;
+    cout << "[2] Dequeue customer from the queue" << endl;
+    cout << "[3] Display the customer queue" << endl;
     cout << "[4] Exit" << endl;
-    cout << "Enter your choice: " << endl;
+    cout << "Enter your choice: ";
     cin >> option;
     if (option >=1 && option <=4)   {
         return option;
@@ -88,6 +83,7 @@ int operationMenu()    {
 }
 
 int main()  {
+    cout << "According to the problem, we can understand that it is an implementation of circular queue, and it is assumed that people standing in a queue is limited to 5." << endl << endl;
     int option = 0;
     int insertedValue;
 

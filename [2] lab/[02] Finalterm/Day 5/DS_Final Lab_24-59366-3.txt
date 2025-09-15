@@ -48,36 +48,33 @@ bool deQueue() {
 }
 
 
-void showQueue()    {
-    if(isEmpty())   {
+void showQueue() {
+    if (isEmpty()) {
         cout << "Queue is underflowed, nothing to show!" << endl;
         return;
     }
+
     cout << "Showing queue (left to right): ";
-    if (front > rear)   {
-        for (int i = front; i < maxSize; i++) {
-            cout << queueArray[i] << " ";
-        }
-        for (int i = 0; i <= rear; i++) {
-            cout << queueArray[i] << " ";
-        }
-    }
-    else    {
-        for (int i = front; i <= rear; i++) {
-            cout << queueArray[i] << " ";
+
+    for (int i = front; ; i = (i + 1) % maxSize) {
+        cout << queueArray[i] << " ";
+
+        if (i == rear) {
+            break;
         }
     }
 
     cout << endl;
 }
 
+
 int operationMenu()    {
     int option;
-    cout << "[1] Enqueue element in the queue" << endl;
-    cout << "[2] Dequeue element from the queue" << endl;
-    cout << "[3] Display the queue" << endl;
+    cout << "[1] Enqueue customer in the queue" << endl;
+    cout << "[2] Dequeue customer in the queue (after payment)" << endl;
+    cout << "[3] Display the customer queue" << endl;
     cout << "[4] Exit" << endl;
-    cout << "Enter your choice: " << endl;
+    cout << "Enter your choice: ";
     cin >> option;
     if (option >=1 && option <=4)   {
         return option;
@@ -88,6 +85,7 @@ int operationMenu()    {
 }
 
 int main()  {
+    cout << "According to the problem, we can understand that it is an implementation of circular queue, and it is assumed that people standing in a queue is limited to 5." << endl << endl;
     int option = 0;
     int insertedValue;
 

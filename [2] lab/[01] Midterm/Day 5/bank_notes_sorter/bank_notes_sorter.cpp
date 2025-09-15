@@ -3,15 +3,12 @@ using namespace std;
 
 int main() {
     cout << "According to the problem, it is assumed that there are a total of 10 bank notes." << endl;
-
     cout << "Please enter bank notes to mimic the case: ";
     int sizeOfArray = 10;
     int bnotearray[sizeOfArray];
     for (int i = 0; i < 10; i++) {
         cin >> bnotearray[i];
     }
-
-
 
     for (int i = 0; i < sizeOfArray - 1; i++) {
         int maxIndex = i;
@@ -32,26 +29,19 @@ int main() {
     }
     cout << endl;
 
-
     int totalAmount = 0;
     for (int i = 0; i < sizeOfArray; i++) {
         totalAmount += bnotearray[i];
     }
 
     cout << "Total Amount: " << totalAmount << " taka" << endl;
-
-
     int desiredAmount;
     cout << "Provide an amount less than total: ";
     cin >> desiredAmount;
-
-
     int notesUsed[sizeOfArray];
     int notesCount = 0;
     int remainingAmount = desiredAmount;
     int totalNeededNotesSum = 0;
-
-
     for (int i = 0; i < sizeOfArray; i++) {
         if (remainingAmount > 0)    {
             if (bnotearray[i] <= remainingAmount) {
@@ -63,7 +53,6 @@ int main() {
         }
     }
     cout << endl;
-
 
     if (remainingAmount != 0)    {
             cout << "WARNING: There are not sufficient ";
@@ -77,8 +66,6 @@ int main() {
         cout << "Remaining amount which cannot be made into count: " << remainingAmount << " taka" << endl;
     }
 
-
-
     cout << "Total notes needed: " << notesCount << " which are ";
     for (int i = 0; i < notesCount; i++) {
         cout << notesUsed[i] << " ";
@@ -88,7 +75,5 @@ int main() {
         cout << "which totals to " << totalNeededNotesSum << " taka" << endl;
     }
     cout << endl;
-
-
     return 0;
 }
